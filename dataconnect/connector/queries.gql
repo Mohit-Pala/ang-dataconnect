@@ -15,3 +15,14 @@ query listCars(
     electric
   }
 }
+
+query listCarByID($id: UUID) @auth(level: PUBLIC) {
+  car(id: $id) {
+    id
+    make
+    model
+    releaseYear
+    color
+    electric
+  }
+}
