@@ -7,7 +7,7 @@ export const OrderDirection = {
 }
 
 export const connectorConfig = {
-  connector: 'default',
+  connector: 'car',
   service: 'ang-dataconnect',
   location: 'us-east1'
 };

@@ -1,18 +1,20 @@
-import { getDataConnect, queryRef, executeQuery, mutationRef, executeMutation, validateArgs } from 'firebase/data-connect';
-export const OrderDirection = {
+const { getDataConnect, queryRef, executeQuery, mutationRef, executeMutation, validateArgs } = require('firebase/data-connect');
+const OrderDirection = {
 
   ASC: "ASC",
 
   DESC: "DESC",
 }
+  exports.OrderDirection = OrderDirection;
 
-export const connectorConfig = {
-  connector: 'default',
+const connectorConfig = {
+  connector: 'car',
   service: 'ang-dataconnect',
   location: 'us-east1'
 };
+exports.connectorConfig = connectorConfig;
 
-export function createCarRef(dcOrVars, vars) {
+function createCarRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   if('_useGeneratedSdk' in dcInstance) {
     dcInstance._useGeneratedSdk();
@@ -21,10 +23,12 @@ export function createCarRef(dcOrVars, vars) {
   }
   return mutationRef(dcInstance, 'createCar', inputVars);
 }
-export function createCar(dcOrVars, vars) {
+exports.createCarRef = createCarRef;
+exports.createCar = function createCar(dcOrVars, vars) {
   return executeMutation(createCarRef(dcOrVars, vars));
-}
-export function updateCarRef(dcOrVars, vars) {
+};
+
+function updateCarRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars, true);
   if('_useGeneratedSdk' in dcInstance) {
     dcInstance._useGeneratedSdk();
@@ -33,10 +37,12 @@ export function updateCarRef(dcOrVars, vars) {
   }
   return mutationRef(dcInstance, 'updateCar', inputVars);
 }
-export function updateCar(dcOrVars, vars) {
+exports.updateCarRef = updateCarRef;
+exports.updateCar = function updateCar(dcOrVars, vars) {
   return executeMutation(updateCarRef(dcOrVars, vars));
-}
-export function deleteCarRef(dcOrVars, vars) {
+};
+
+function deleteCarRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
   if('_useGeneratedSdk' in dcInstance) {
     dcInstance._useGeneratedSdk();
@@ -45,10 +51,12 @@ export function deleteCarRef(dcOrVars, vars) {
   }
   return mutationRef(dcInstance, 'deleteCar', inputVars);
 }
-export function deleteCar(dcOrVars, vars) {
+exports.deleteCarRef = deleteCarRef;
+exports.deleteCar = function deleteCar(dcOrVars, vars) {
   return executeMutation(deleteCarRef(dcOrVars, vars));
-}
-export function listCarsRef(dcOrVars, vars) {
+};
+
+function listCarsRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
   if('_useGeneratedSdk' in dcInstance) {
     dcInstance._useGeneratedSdk();
@@ -57,10 +65,12 @@ export function listCarsRef(dcOrVars, vars) {
   }
   return queryRef(dcInstance, 'listCars', inputVars);
 }
-export function listCars(dcOrVars, vars) {
+exports.listCarsRef = listCarsRef;
+exports.listCars = function listCars(dcOrVars, vars) {
   return executeQuery(listCarsRef(dcOrVars, vars));
-}
-export function listCarByIdRef(dcOrVars, vars) {
+};
+
+function listCarByIdRef(dcOrVars, vars) {
   const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
   if('_useGeneratedSdk' in dcInstance) {
     dcInstance._useGeneratedSdk();
@@ -69,6 +79,8 @@ export function listCarByIdRef(dcOrVars, vars) {
   }
   return queryRef(dcInstance, 'listCarByID', inputVars);
 }
-export function listCarById(dcOrVars, vars) {
+exports.listCarByIdRef = listCarByIdRef;
+exports.listCarById = function listCarById(dcOrVars, vars) {
   return executeQuery(listCarByIdRef(dcOrVars, vars));
-}
+};
+

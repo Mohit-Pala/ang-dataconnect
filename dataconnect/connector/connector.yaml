@@ -1,6 +1,6 @@
-connectorId: default
+connectorId: car
 generate:
   javascriptSdk:
-    outputDir: ../../dataconnect-generated/js/default-connector
-    package: "@firebasegen/default-connector"
+    outputDir: ../../src/app/car-generated
+    package: "@car-app/car-connector"
     packageJsonDir: ../..
