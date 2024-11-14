@@ -1,4 +1,11 @@
-const { getDataConnect, mutationRef, executeMutation, validateArgs } = require('firebase/data-connect');
+const { getDataConnect, queryRef, executeQuery, mutationRef, executeMutation, validateArgs } = require('firebase/data-connect');
+const OrderDirection = {
+
+  ASC: "ASC",
+
+  DESC: "DESC",
+}
+  exports.OrderDirection = OrderDirection;
 
 const connectorConfig = {
   connector: 'default',
@@ -47,5 +54,19 @@ function deleteCarRef(dcOrVars, vars) {
 exports.deleteCarRef = deleteCarRef;
 exports.deleteCar = function deleteCar(dcOrVars, vars) {
   return executeMutation(deleteCarRef(dcOrVars, vars));
+};
+
+function listCarsRef(dcOrVars, vars) {
+  const { dc: dcInstance, vars: inputVars} = validateArgs(connectorConfig, dcOrVars, vars);
+  if('_useGeneratedSdk' in dcInstance) {
+    dcInstance._useGeneratedSdk();
+  } else {
+    console.error('Please update to the latest version of the Data Connect SDK by running `npm install firebase@dataconnect-preview`.');
+  }
+  return queryRef(dcInstance, 'listCars', inputVars);
+}
+exports.listCarsRef = listCarsRef;
+exports.listCars = function listCars(dcOrVars, vars) {
+  return executeQuery(listCarsRef(dcOrVars, vars));
 };
 

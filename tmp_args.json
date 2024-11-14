@@ -6,3 +6,10 @@
     "model": "cherokee",
     "releaseYear": 2019
 }
+
+{
+    "orderByModel": "ASC",
+    "orderByRelYear": "ASC",
+    "limit": 10
+}
+
