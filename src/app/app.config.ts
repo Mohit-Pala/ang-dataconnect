@@ -4,9 +4,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
-import { firebaseConfig } from './firebaseConfig'; 
 import { connectDataConnectEmulator, getDataConnect } from 'firebase/data-connect';
 import { connectorConfig } from './car-generated';
+import { firebaseConfig } from '../../config/firebase_config';
 
 export const appConfig: ApplicationConfig = {
   providers: [
