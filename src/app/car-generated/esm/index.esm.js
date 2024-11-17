@@ -9,7 +9,7 @@ export const OrderDirection = {
 export const connectorConfig = {
   connector: 'car',
   service: 'ang-dataconnect',
-  location: 'us-east1'
+  location: 'us-central1'
 };
 
 export function createCarRef(dcOrVars, vars) {

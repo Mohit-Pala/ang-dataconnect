@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { listCarById, ListCarByIdData } from '../car-generated';
+import { listCarById, ListCarByIdData, listCars, ListCarsData } from '../car-generated';
 
 @Injectable({
   providedIn: 'root'
@@ -28,3 +28,17 @@ export const handleGetCarByID = async (
     return null;
   }
 };
+
+export const handleGetAllCars = async (
+): Promise<ListCarsData["cars"] | null> => {
+  try {
+    const response = await listCars({});
+    if (response.data.cars) {
+      return response.data.cars;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error fetching car:', error)
+    return null
+  }
+}
